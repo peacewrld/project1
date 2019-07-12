@@ -1,0 +1,45 @@
+﻿@model project1_4.Models.Account.Account
+
+@{
+    ViewData["Title"] = "CreateCheckingAccount";
+}
+    <style>
+        body {
+            font-family: 'Open Sans Condensed', sans-serif;
+            background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+        }
+
+        .col-md-4 {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+
+    <body>
+        <h2 style="margin-top:50px">Create</h2>
+        <h4>Checking Account</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4" >
+                <form asp-action="CreateCheckingAccount">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Balance" class="control-label">Set Balance</label>
+                        <input asp-for="Balance" class="form-control" required />
+                        <span asp-validation-for="Balance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="margin-top: 80px">
+            <p style="text-align:center"><a id="button-back" asp-action="Create" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+        </div>
+    </body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

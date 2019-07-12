@@ -1,0 +1,92 @@
+﻿@model project1_4.Models.Account.Account
+
+@{
+    ViewData["Title"] = "Close";
+}
+
+<style>
+    body{
+        background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    dt,dd{
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    dt{
+        color: cadetblue;
+    }
+    .dl-horizontal{
+        text-align: center;
+        margin-top: 45px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 5px;
+    }
+    #button-back:hover{
+        text-decoration:none;
+    }
+</style>
+
+<h2 style="margin-top: 50px">Close Account</h2>
+
+<form asp-action="Close">
+    <span style="font-size: 23px">Are you sure you want to close this account?   </span>
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Close Account" class="btn btn-default" />
+</form>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoutingNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoutingNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+        <dd>
+            $@Html.DisplayFor(model => model.Balance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Interest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+        <dt>
+            Term/Payoff Date
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CloseDate)
+        </dd>
+    </dl>
+    <div style="margin-top: 80px">
+        <p style="text-align:center"><a id="button-back" asp-action="MyAccount" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+    </div>
+</div>

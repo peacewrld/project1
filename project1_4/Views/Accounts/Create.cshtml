@@ -1,0 +1,66 @@
+﻿@model project1_4.Models.Account.Account
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+    }
+    #button-account{
+        border-radius: 5px;
+        background-color: cadetblue;
+        color: floralwhite;
+        padding: 40px;
+    }
+    #button-account:hover{
+        text-decoration: none;
+    }
+    .row{
+        width:auto;
+    }
+    .nav_createaccount{
+        margin-left: auto;
+        margin-right: auto;
+        width: 850px;
+    }
+    .nav_account > li{
+        list-style-type: none;
+        display: inline;
+        opacity: 0.5;
+        transition-duration: 0.5s;
+    }
+    .nav_account > li:hover{
+        opacity: 1;
+        transition-duration: 0.5s;
+    }
+    #button-back:hover{
+        text-decoration:none;
+
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center; width: auto; margin-bottom: 90px; margin-top: 140px; font-family: 'Open Sans Condensed', sans-serif; font-weight: 900; font-size: 45px; ">Create</h1>
+
+    <div class="row">
+        <div class="nav_createaccount">
+            <ul class="nav_account">
+                <li><a id="button-account" asp-area="" asp-controller="Accounts" asp-action="CreateBusinessAccount">Business Account</a></li>
+                <li><a id="button-account" asp-area="" asp-controller="Accounts" asp-action="CreateCheckingAccount">Checking Account</a></li>
+                <li><a id="button-account" asp-area="" asp-controller="Accounts" asp-action="CreateLoanAccount">Loan Account</a></li>
+                <li><a id="button-account" asp-area="" asp-controller="Accounts" asp-action="CreateTermDepositAccount">Term Deposit Account</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px">
+        <p style="text-align:center"><a id="button-back" asp-action="MyAccount" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,33 @@
+﻿p {
+    position:relative;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+}
+@keyframes slidein{
+    0% {
+        color: aqua;
+        left: 0px;
+        top: 170px;
+    }
+    25% {
+        color: white;
+        left: 300px;
+        top: 170px;
+    }
+    50% {
+        color: black;
+        left: 200px;
+        top: 170px;
+    }
+    75% {
+        color: indianred;
+        left: 15px;
+        top: 170px;
+    }
+    100% {
+        color: white;
+        left: 0px;
+        top: 170px;
+    }
+}

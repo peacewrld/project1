@@ -1,0 +1,75 @@
+﻿@model IEnumerable<project1_4.Models.Account.Transaction>
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+<style>
+    body{
+        background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    th{
+        background-color: cadetblue;
+        opacity: 0.8;
+    }
+    th,td{
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    table{
+        margin-top: 15px;
+        border: 1px solid cadetblue;
+        background-color: white;
+    }
+    #button-search:hover{
+        color:white;
+    }
+</style>
+
+
+<h2 style="font-family: 'Open Sans Condensed', sans-serif; margin-top: 50px;">Transaction</h2>
+
+<div>
+    <form >
+        <span>Start day: </span>
+        <input type="date" name="StartDay" required />
+        <span>End day: </span>
+        <input type="date" name="EndDay" required />
+        <input id="button-search" type="submit" value="Search" style="background-color:cadetblue; border:none; padding-left:10px; padding-right:10px; border: 1px solid black; "/>
+    </form>
+
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Account ID</th>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Goal Account</th>
+                <th>Transaction Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int index = 0;
+                foreach (var item in Model)
+                {
+                    if (index < 10)
+                    {
+                        <tr>
+                            <td>@item.AccountId</td>
+                            <td>@item.TransactionType</td>
+                            <td>$@item.Amount</td>
+                            <td>@item.GoalAccount</td>
+                            <td>@item.TransactionTime</td>
+                        </tr>
+                    }
+                    index++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div style="margin-top: 80px">
+    <p style="text-align:center"><a id="button-back" asp-action="MyAccount" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+</div>

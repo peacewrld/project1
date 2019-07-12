@@ -1,0 +1,62 @@
+﻿
+@model project1_4.ListOfAccount.ListAccount
+
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+<style>
+    body {
+        font-family: 'Open Sans Condensed', sans-serif;
+        background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+    }
+
+    .col-md-4 {
+        background-color: white;
+        border-radius: 5px;
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <h2 style="margin-top:50px;">Transfer to</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Transfer">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <select name="to_id">
+                        @foreach (var item in Model.listAccount)
+                        {
+                            if (item.Id != Model.currentAccount.Id && item.isActive)
+                            {
+                                switch (item.AccountType)
+                                {
+                                    case "Checking Account":
+                                    case "Business Account":
+                                        <option value="@item.Id">@item.AccountNumber  |  @item.AccountType  |  $@item.Balance</option>
+                                        break;
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label value="Amount" class="control-label">Amount</label>
+                    <input name="amount" type="number" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Transfer" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin-top: 80px">
+        <p style="text-align:center"><a id="button-back" asp-action="Operations" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                    }

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<project1_4.Models.Account.Account>
+
+@{
+    ViewData["Title"] = "OperationsTermDepositAccount";
+}
+
+<style>
+    body{
+        background-image: url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?cs=srgb&dl=-62693.jpg&fm=jpg');
+    }
+    th,td {
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+    th{
+        background-color:cadetblue;
+        opacity: 0.8;   
+    }
+    .table{
+        margin-top: 20px;
+        border: 1px solid cadetblue;
+        background-color: white;
+    }
+
+    #button-operate{
+        color: cadetblue;
+        opacity: 0.8;
+        border-radius: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #button-operate:hover{
+        opacity: 1;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+    }
+</style>
+
+<h2 style="margin-top: 50px; margin-bottom: 20px; font-family: 'Open Sans Condensed', sans-serif;">Term Deposit Accounts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoutingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                Term/Payoff Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoutingNumber)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Interest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CloseDate)
+                </td>
+                <td>
+                    <a id="button-operate" asp-action="Withdraw" asp-route-id="@item.Id">Withdraw</a> |
+                    <a id="button-operate" asp-action="Transfer" asp-route-id="@item.Id">Transfer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="margin-top: 80px">
+    <p style="text-align:center"><a id="button-back" asp-action="Operations" style="font-size:25px; font-family: 'Open Sans Condensed', sans-serif;"> BACK </a></p>
+</div>
